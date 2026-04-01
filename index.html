@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Imperium Business Intelligence Ltd</title>
+  <meta name="description" content="Imperium Business Intelligence Ltd — a UK-based technology holding company building vertical SaaS across finance, legal, trades, and AI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080b0e;
+      --surface: #0f1419;
+      --border: rgba(255,255,255,0.07);
+      --accent: #18D9C0;
+      --accent-dim: rgba(24,217,192,0.12);
+      --text: #e8eaed;
+      --muted: #6b7280;
+      --white: #ffffff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 4rem;
+      background: rgba(8,11,14,0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+    .nav-logo img { height: 36px; }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 10rem 4rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(24,217,192,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-left { position: relative; z-index: 1; }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-dim);
+      border: 1px solid rgba(24,217,192,0.25);
+      color: var(--accent);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 2px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.8rem);
+      font-weight: 400;
+      line-height: 1.08;
+      color: var(--white);
+      margin-bottom: 1.8rem;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 440px;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--accent);
+      color: #080b0e;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: opacity 0.2s;
+    }
+    .hero-cta:hover { opacity: 0.85; }
+    .hero-cta svg { width: 14px; height: 14px; }
+
+    .hero-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero-mark {
+      width: 280px; height: 280px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-mark::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1px solid rgba(24,217,192,0.2);
+      animation: pulse-ring 3s ease-in-out infinite;
+    }
+
+    .hero-mark::after {
+      content: '';
+      position: absolute;
+      inset: -40px;
+      border-radius: 50%;
+      border: 1px solid rgba(24,217,192,0.08);
+      animation: pulse-ring 3s ease-in-out infinite 0.8s;
+    }
+
+    @keyframes pulse-ring {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.04); }
+    }
+
+    .hero-mark img { width: 160px; position: relative; z-index: 1; }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stat {
+      padding: 2.5rem 4rem;
+      border-right: 1px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+
+    .stat-num {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .stat-num span { color: var(--accent); }
+
+    .stat-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.5rem;
+    }
+
+    /* ── SECTION HEADINGS ── */
+    .section-header {
+      padding: 6rem 4rem 3rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.1;
+    }
+
+    h2 span { color: var(--accent); font-style: italic; }
+
+    /* ── PORTFOLIO GRID ── */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .product-card {
+      padding: 3rem 4rem;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      transition: background 0.3s;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s, transform 0.5s, background 0.3s;
+    }
+
+    .product-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .product-card:hover { background: var(--surface); }
+    .product-card:nth-child(3n) { border-right: none; }
+
+    .product-status {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.7rem;
+      border-radius: 2px;
+      margin-bottom: 1.2rem;
+    }
+
+    .status-live { background: rgba(24,217,192,0.15); color: var(--accent); }
+    .status-beta { background: rgba(251,191,36,0.12); color: #fbbf24; }
+    .status-build { background: rgba(255,255,255,0.06); color: var(--muted); }
+
+    .product-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    .product-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+    }
+
+    .product-sector {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(24,217,192,0.5);
+    }
+
+    /* ── FOUNDER ── */
+    .founder-section {
+      padding: 6rem 4rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .founder-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .founder-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .founder-title {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .founder-creds {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .cred {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.8rem;
+      border-radius: 2px;
+    }
+
+    .founder-right h3 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .founder-right p {
+      font-size: 1.05rem;
+      color: rgba(232,234,237,0.75);
+      line-height: 1.85;
+      max-width: 640px;
+    }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      padding: 6rem 4rem;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      text-align: center;
+    }
+
+    .contact-inner h2 { margin-bottom: 1.5rem; }
+
+    .contact-link {
+      display: inline-block;
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(24,217,192,0.3);
+      padding-bottom: 2px;
+      transition: border-color 0.2s, opacity 0.2s;
+    }
+    .contact-link:hover { opacity: 0.75; border-color: var(--accent); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 4rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo { display: flex; align-items: center; gap: 1rem; }
+    .footer-logo img { height: 24px; opacity: 0.6; }
+    .footer-txt {
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-right {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      .hero { grid-template-columns: 1fr; padding: 8rem 1.5rem 4rem; }
+      .hero-right { display: none; }
+      .stats-bar { grid-template-columns: 1fr 1fr; }
+      .stat { padding: 2rem 1.5rem; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .product-card { border-right: none; }
+      .section-header { padding: 4rem 1.5rem 2rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .founder-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .founder-section, .contact-section { padding: 4rem 1.5rem; }
+      footer { padding: 1.5rem; }
+      .footer-inner { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">
+      <img src="logo.svg" alt="Imperium BI" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#founder">Leadership</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-tag">UK Technology Holding Company</div>
+      <h1>Building the future of<br /><em>vertical SaaS.</em></h1>
+      <p class="hero-sub">
+        Imperium Business Intelligence Ltd develops and holds a portfolio of
+        AI-powered software products across finance, legal, trades, and operations.
+        Founded in Margate, Kent.
+      </p>
+      <a href="#portfolio" class="hero-cta">
+        View Portfolio
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+    <div class="hero-right">
+      <div class="hero-mark">
+        <img src="logo.svg" alt="Imperium BI mark" />
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-num">20<span>+</span></div>
+      <div class="stat-label">Products in Portfolio</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">25<span>yr</span></div>
+      <div class="stat-label">Domain Expertise</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">5</div>
+      <div class="stat-label">Verticals Covered</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2019</div>
+      <div class="stat-label">Established, UK</div>
+    </div>
+  </div>
+
+  <!-- PORTFOLIO -->
+  <div id="portfolio">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Our Portfolio</div>
+        <h2>Products &amp; <span>Ventures</span></h2>
+      </div>
+    </div>
+
+    <div class="portfolio-grid">
+
+      <div class="product-card">
+        <span class="product-status status-live">Live</span>
+        <div class="product-name">Imperium BI Platform</div>
+        <p class="product-desc">Business intelligence and reporting platform for SME finance teams. Real-time dashboards, automated reporting, and data consolidation.</p>
+        <span class="product-sector">Finance · BI</span>
+      </div>
+
+      <div class="product-card">
+        <span class="product-status status-beta">Beta</span>
+        <div class="product-name">LegalEdge</div>
+        <p class="product-desc">AI-assisted contract review and compliance tracking for small legal practices and in-house legal teams.</p>
+        <span class="product-sector">Legal · AI</span>
+      </div>
+
+      <div class="product-card">
+        <span class="product-status status-beta">Beta</span>
+        <div class="product-name">TradesHub</div>
+        <p class="product-desc">Field management, job scheduling, and invoicing for sole traders and small trades businesses. Built for plumbers, electricians, and builders.</p>
+        <span class="product-sector">Trades · Operations</span>
+      </div>
+
+      <div class="product-card">
+        <span class="product-status status-build">In Build</span>
+        <div class="product-name">CashFlow AI</div>
+        <p class="product-desc">Predictive cash flow modelling for SMEs, integrated with accounting platforms. 13-week rolling forecast with scenario analysis.</p>
+        <span class="product-sector">Finance · AI</span>
+      </div>
+
+      <div class="product-card">
+        <span class="product-status status-build">In Build</span>
+        <div class="product-name">AuditReady</div>
+        <p class="product-desc">Automated audit trail generation and evidence packs for year-end and compliance audits. Reduce audit preparation time by 80%.</p>
+        <span class="product-sector">Finance · Compliance</span>
+      </div>
+
+      <div class="product-card">
+        <span class="product-status status-build">In Build</span>
+        <div class="product-name">PropStack</div>
+        <p class="product-desc">Property portfolio management and reporting for landlords and estate agents. Yield tracking, maintenance scheduling, and tenant management.</p>
+        <span class="product-sector">Property · Operations</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOUNDER -->
+  <div id="founder" class="founder-section">
+    <div class="founder-inner">
+      <div class="reveal">
+        <div class="section-label">Leadership</div>
+        <p class="founder-name">Andrew Hoyle</p>
+        <p class="founder-title">Founder &amp; Chief Executive Officer</p>
+        <div class="founder-creds">
+          <span class="cred">CIMA Qualified</span>
+          <span class="cred">25 Years</span>
+          <span class="cred">Full-Stack Engineer</span>
+          <span class="cred">Margate, UK</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <h3>About the Founder</h3>
+        <p>
+          CIMA qualified accountant with 25 years spanning audit, financial services,
+          senior finance leadership, business intelligence consultancy, and full-stack
+          software engineering. Andrew founded Imperium Business Intelligence Ltd to build
+          a portfolio of vertical SaaS products that combine deep domain expertise with
+          modern AI capabilities — from Margate, Kent.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact" class="contact-section">
+    <div class="contact-inner">
+      <div class="section-label">Get In Touch</div>
+      <h2>Let's <span>talk.</span></h2>
+      <br />
+      <a class="contact-link" href="mailto:andrew.hoyle@imperium-bi.co.uk">
+        andrew.hoyle@imperium-bi.co.uk
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="logo.svg" alt="Imperium BI" />
+        <span class="footer-txt">Imperium Business Intelligence Ltd &middot; Registered in England &amp; Wales</span>
+      </div>
+      <div class="footer-right">&copy; 2026 Imperium Business Intelligence Ltd</div>
+    </div>
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal, .product-card');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 60);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>
