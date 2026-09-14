@@ -1,6 +1,6 @@
 # Imperium Business Intelligence Ltd
 
-Corporate holding company website for Imperium Business Intelligence Ltd.
+Data & business intelligence consultancy website for Imperium Business Intelligence Ltd.
 
 ## Stack
 
