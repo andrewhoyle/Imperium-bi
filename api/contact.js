@@ -17,7 +17,17 @@ module.exports = async (req, res) => {
 
   try {
     const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {});
-    const { type, name, email, message, topic, date, time, website, elapsed } = body;
+    const oneLine = (v, n) => (typeof v === 'string' ? v.replace(/[\r\n]+/g, ' ').trim().slice(0, n) : v);
+    const clip = (v, n) => (typeof v === 'string' ? v.slice(0, n) : '');
+    const type = body.type;
+    const website = body.website;
+    const elapsed = body.elapsed;
+    const name = oneLine(body.name, 150);
+    const email = oneLine(body.email, 320);
+    const topic = oneLine(body.topic, 150);
+    const date = oneLine(body.date, 40);
+    const time = oneLine(body.time, 40);
+    const message = clip(body.message, 5000);
 
     // Spam gate 1: honeypot. Bots fill the hidden "website" field.
     if (website) return res.status(200).json({ ok: true });
