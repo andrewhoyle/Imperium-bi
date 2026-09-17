@@ -676,28 +676,12 @@
       <div class="footer-right">
         <div>&copy; 2026 Imperium Business Intelligence Ltd</div>
         <div>Company No. 12077518 · 29 Cliffe Avenue, Margate, Kent CT9 5DU</div>
-        <div><a href="https://www.linkedin.com/in/andrew-hoyle-625378129" target="_blank" rel="noopener" style="color:#A8AFCA;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#18D9C0'" onmouseout="this.style.color='#A8AFCA'">LinkedIn</a> &middot; <a href="#privacy" onclick="event.preventDefault();openPrivacy()" style="color:#A8AFCA;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#18D9C0'" onmouseout="this.style.color='#A8AFCA'">Privacy Policy</a></div>
+        <div><a href="https://www.linkedin.com/in/andrew-hoyle-625378129" target="_blank" rel="noopener" style="color:#A8AFCA;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#18D9C0'" onmouseout="this.style.color='#A8AFCA'">LinkedIn</a> &middot; <a href="/privacy" style="color:#A8AFCA;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#18D9C0'" onmouseout="this.style.color='#A8AFCA'">Privacy Notice</a></div>
       </div>
     </div>
   </footer>
 
   <!-- PRIVACY MODAL -->
-  <div id="privacy-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;align-items:center;justify-content:center;padding:2rem;">
-    <div role="dialog" aria-modal="true" aria-labelledby="privacy-title" style="background:#0C1018;border:1px solid #161C28;max-width:640px;width:100%;max-height:80vh;overflow-y:auto;padding:3rem;position:relative;">
-      <button onclick="closePrivacy()" aria-label="Close" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:#525870;font-size:1.2rem;cursor:pointer;">&#x2715;</button>
-      <h2 id="privacy-title" style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.2rem;color:#fff;margin-bottom:1.5rem;letter-spacing:-0.01em;">Privacy Policy</h2>
-      <div style="font-size:0.8rem;color:#A8AFCA;line-height:1.9;">
-        <p style="margin-bottom:1rem;"><strong style="color:#8B90A8;">Imperium Business Intelligence Ltd</strong> (Company No. 12077518) is committed to protecting your personal data.</p>
-        <p style="margin-bottom:0.75rem;"><strong style="color:#8B90A8;">Data we collect</strong><br>When you contact us via this website we collect your name and email address solely to respond to your enquiry.</p>
-        <p style="margin-bottom:0.75rem;"><strong style="color:#8B90A8;">How we use it</strong><br>Your data is used only to respond to your message. We do not sell or market to your data. Form submissions are delivered to our inbox via our email provider (Resend) acting as a data processor on our behalf, and are not used for any other purpose.</p>
-        <p style="margin-bottom:0.75rem;"><strong style="color:#8B90A8;">Retention</strong><br>We retain contact data for no longer than 12 months unless an ongoing relationship requires otherwise.</p>
-        <p style="margin-bottom:0.75rem;"><strong style="color:#8B90A8;">Your rights</strong><br>Under UK GDPR you have the right to access, correct, or request deletion of your data. Contact us at <a href="mailto:andrew.hoyle@imperium-bi.co.uk">andrew.hoyle@imperium-bi.co.uk</a>.</p>
-        <p style="margin-bottom:0.75rem;"><strong style="color:#8B90A8;">Analytics &amp; cookies</strong><br>This website uses privacy-friendly, cookieless analytics (Vercel) to count visits. It sets no cookies, and collects no personal or identifying data.</p>
-        <p><strong style="color:#8B90A8;">Registered address</strong><br>29 Cliffe Avenue, Margate, Kent CT9 5DU</p>
-      </div>
-    </div>
-  </div>
-
   <!-- BOOKING MODAL -->
   <div id="booking-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;align-items:center;justify-content:center;padding:2rem;">
     <div role="dialog" aria-modal="true" aria-labelledby="booking-title" style="background:#0C1018;border:1px solid #161C28;max-width:520px;width:100%;max-height:88vh;overflow-y:auto;padding:3rem;position:relative;">
@@ -810,8 +794,6 @@
       if (_modalReturnFocus && _modalReturnFocus.focus) _modalReturnFocus.focus();
       _modalReturnFocus = null;
     }
-    function openPrivacy() { showModal(document.getElementById('privacy-modal')); }
-    function closePrivacy() { hideModal(document.getElementById('privacy-modal')); }
 
     function openService(id) {
       const s = SERVICES[id];
@@ -846,10 +828,7 @@
     document.getElementById('service-modal').addEventListener('click', function (e) {
       if (e.target.id === 'service-modal') closeService();
     });
-    document.getElementById('privacy-modal').addEventListener('click', function (e) {
-      if (e.target.id === 'privacy-modal') closePrivacy();
-    });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeService(); closeBooking(); closePrivacy(); } });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeService(); closeBooking(); } });
 
     // mobile nav toggle
     (function () {
