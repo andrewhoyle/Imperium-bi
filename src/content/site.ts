@@ -14,27 +14,27 @@ export const site = {
     eyebrow: "Finance · BI · AI",
     titleLead: "Finance that runs",
     titleAccent: "itself",
-    lead: "CIMA-qualified finance leadership and finance-systems expertise. I own the numbers end to end and rebuild the reporting around them — delivering £100k+ in savings and a finance function that runs itself. Plus BI, analytics and AI for teams that need it.",
+    lead: "CIMA-qualified finance leadership and finance-systems expertise. I own the numbers end to end and rebuild the reporting around them — leaving behind a finance function that runs itself. Plus BI, analytics and AI for teams that need it.",
     sub: "Fractional or interim — senior finance leadership without the full-time hire.",
-    availability: "Available now · Fractional, interim, contract or permanent",
+    availability: "Available now · Fractional, interim or contract",
     quote: "“I make things that as a kid I could only have dreamed of.”",
   },
 };
 
 export const nav: { label: string; href: string }[] = [
+  { label: "Fractional", href: "/fractional" },
   { label: "Finance", href: "/finance" },
   { label: "Data & BI", href: "/data-bi" },
-  { label: "How we work", href: "/how-we-work" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
 export type Stat = { stat: string; unit?: string; label: string };
 export const stats: Stat[] = [
-  { stat: "£100k+", label: "Saved through redesign" },
-  { stat: "Days", label: "Close, down from weeks" },
   { stat: "25", unit: "yr", label: "Finance & BI experience" },
   { stat: "CIMA", label: "ACMA · CGMA qualified" },
+  { stat: "1:1", label: "Owner-led delivery" },
+  { stat: "UK", label: "Remote-first" },
 ];
 
 export type Service = {
@@ -74,7 +74,7 @@ export const financeServices: Service[] = [
         "Close taken from weeks to days",
         "Automated reconciliations and reporting",
         "A finance function that runs itself, not a manual",
-        "£100k+ annual savings through process redesign",
+        "Real, measurable savings through process redesign",
       ],
     },
   },
@@ -431,22 +431,48 @@ export const engagements: Engagement[] = [
 
 export const fractionalAdvantages: { title: string; blurb: string }[] = [
   {
-    title: "FD-level, a fraction of the cost",
+    title: "FD-level expertise, a fraction of the cost",
     blurb:
-      "25 years and banking-grade rigour, for a day a week or month — not a six-figure full-time salary.",
+      "25 years and banking-grade rigour for a day a week or month — not a six-figure salary, on-costs and recruitment fees.",
   },
   {
-    title: "Flexible — scale up or down",
-    blurb: "Dial the commitment up when it's busy and down when it isn't. No notice periods, no overhead.",
-  },
-  {
-    title: "Wins that compound",
+    title: "Flexible commitment",
     blurb:
-      "A day a month of streamlining and automation keeps paying back — the finance function gets better every month.",
+      "From a day a month to a day a week. Scale up when it's busy, down when it isn't — no notice periods, no overhead.",
   },
   {
-    title: "A safe pair of hands",
-    blurb: "Someone who already knows your numbers, your systems and your board — ready when you need them.",
+    title: "Senior from day one",
+    blurb:
+      "No hiring lag, no ramp-up. You get an experienced finance leader who's productive from the first day.",
+  },
+  {
+    title: "Improvement that compounds",
+    blurb:
+      "Every month the finance function gets cleaner, faster and more automated — a day a month that keeps paying back.",
+  },
+  {
+    title: "Lower risk, better control",
+    blurb:
+      "Board-ready numbers, tighter controls and fewer surprises — the rigour of a much bigger finance team.",
+  },
+  {
+    title: "You focus on the business",
+    blurb: "We own the numbers, the reporting and the systems, so leadership can get on with growing the company.",
+  },
+];
+
+export const fractionalHow: { title: string; blurb: string }[] = [
+  {
+    title: "Pick a cadence",
+    blurb: "Start at a day a month and dial up to a day a week as you need — whatever fits the business.",
+  },
+  {
+    title: "Rolling, not locked-in",
+    blurb: "A simple rolling arrangement. Scale it, pause it or stop it — no long contracts, no recruitment risk.",
+  },
+  {
+    title: "Owner-led",
+    blurb: "You work directly with Andrew — the specialist doing the work, not an account manager.",
   },
 ];
 

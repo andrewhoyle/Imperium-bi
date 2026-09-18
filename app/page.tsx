@@ -33,8 +33,8 @@ export default function HomePage() {
             <ButtonLink href="/contact" variant="primary">
               Book a call <ArrowRight className="h-4 w-4" />
             </ButtonLink>
-            <ButtonLink href="/how-we-work" variant="outline" className="border-white/20 text-white hover:bg-white/10">
-              How we work
+            <ButtonLink href="/fractional" variant="outline" className="border-white/20 text-white hover:bg-white/10">
+              Fractional
             </ButtonLink>
           </div>
           <div className="mt-9 inline-flex items-center gap-2 rounded border border-brand/30 px-3 py-2 font-display text-[0.6rem] uppercase tracking-[0.15em] text-brand">
@@ -86,12 +86,12 @@ export default function HomePage() {
               </Link>
             </Card>
             <Card>
-              <h3 className="font-display text-lg font-semibold text-white">How we work</h3>
+              <h3 className="font-display text-lg font-semibold text-white">Fractional &amp; interim</h3>
               <p className="mt-2 text-sm text-muted">
-                Fractional, interim or contract — senior finance leadership without the full-time hire.
+                Senior finance leadership from a day a month — the advantage of an FD without the full-time hire.
               </p>
-              <Link href="/how-we-work" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand hover:text-white">
-                Ways to work together <ArrowRight className="h-4 w-4" />
+              <Link href="/fractional" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand hover:text-white">
+                Why fractional <ArrowRight className="h-4 w-4" />
               </Link>
             </Card>
           </div>
