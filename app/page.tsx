@@ -98,8 +98,40 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* Experience */}
+      {/* Book it your way */}
       <Section alt>
+        <Container>
+          <div className="rounded-2xl border border-line bg-bg-soft p-8 text-center sm:p-12">
+            <p className="font-display text-[0.58rem] uppercase tracking-[0.4em] text-brand">Flexible</p>
+            <h2 className="mt-3 font-display text-2xl font-semibold text-white sm:text-3xl">
+              Book it your way — one-off or recurring.
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl leading-relaxed text-muted">
+              A single project, a one-off call, or a regular slot — weekly, monthly, a day a month, or whatever
+              cadence suits you. You choose exactly how much support and how often; scale it up or down, or stop, any
+              time.
+            </p>
+            <div className="mt-6 flex flex-wrap justify-center gap-2">
+              {["One-off", "Weekly", "Monthly", "A day a month", "Ongoing", "Whatever suits you"].map((c) => (
+                <span
+                  key={c}
+                  className="rounded-full border border-line px-3 py-1.5 font-display text-[0.6rem] uppercase tracking-[0.12em] text-muted"
+                >
+                  {c}
+                </span>
+              ))}
+            </div>
+            <div className="mt-8 flex justify-center">
+              <ButtonLink href="/contact" variant="primary">
+                Book a call <ArrowRight className="h-4 w-4" />
+              </ButtonLink>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Experience */}
+      <Section>
         <Container>
           <SectionHeading
             eyebrow="Experience"
