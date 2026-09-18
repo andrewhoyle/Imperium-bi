@@ -126,9 +126,9 @@
       display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
     }
     .hero-eyebrow {
-      font-family: 'Montserrat', sans-serif; font-size: 0.58rem;
-      letter-spacing: 0.4em; text-transform: uppercase; color: var(--accent);
-      margin-bottom: 1.75rem; display: flex; align-items: center; gap: 0.75rem;
+      font-family: 'Montserrat', sans-serif; font-size: clamp(1.05rem, 2.1vw, 1.55rem);
+      font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent);
+      margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.9rem;
       opacity: 0; animation: fadeUp 0.7s 0.2s forwards;
     }
     .hero-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
@@ -380,7 +380,7 @@
     <div class="hero-inner">
       <div class="hero-left">
         <p class="hero-eyebrow">Finance Transformation &middot; BI &middot; AI</p>
-        <h1 class="hero-title">Your month-end,<br>from weeks to <span class="accent">days</span>.</h1>
+        <h1 class="hero-title">Finance that runs <span class="accent">itself</span>.</h1>
         <div class="hero-divider"></div>
         <p class="hero-desc">CIMA-qualified finance leadership and finance-systems transformation. I own the numbers end to end and rebuild the reporting around them — delivering £100k+ in savings and a finance function that runs itself. Plus BI, analytics and AI for teams that need it.</p>
         <p class="hero-tagline">&ldquo;I make things that as a kid I could only have dreamed of.&rdquo;</p>
