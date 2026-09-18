@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { nav } from "@/src/content/site";
@@ -24,7 +25,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-bg/80 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
-        <Link href="/" aria-label="Imperium BI home" className="flex items-center">
+        <Link href="/" aria-label="Imperium BI home" className="flex items-center gap-2.5">
+          <Image src="/logo.png" alt="" width={44} height={30} priority className="h-8 w-auto" />
           <Wordmark />
         </Link>
 

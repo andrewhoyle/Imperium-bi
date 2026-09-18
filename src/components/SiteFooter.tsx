@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { nav, site } from "@/src/content/site";
 import { Container } from "@/src/components/ui";
 
@@ -7,9 +8,12 @@ export function SiteFooter() {
     <footer className="border-t border-line bg-bg-soft">
       <Container className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr]">
         <div className="max-w-sm">
-          <span className="font-display text-lg font-extrabold uppercase tracking-[0.14em] text-white">
-            Imperium <span className="text-brand">BI</span>
-          </span>
+          <div className="flex items-center gap-2.5">
+            <Image src="/logo.png" alt="" width={40} height={27} className="h-7 w-auto" />
+            <span className="font-display text-lg font-extrabold uppercase tracking-[0.14em] text-white">
+              Imperium <span className="text-brand">BI</span>
+            </span>
+          </div>
           <p className="mt-3 text-sm text-muted">
             Finance leadership, BI and AI — fractional, interim or contract. Owner-led by{" "}
             {site.legalName.replace(" Ltd", "")}, delivered directly by Andrew Hoyle, ACMA CGMA.
