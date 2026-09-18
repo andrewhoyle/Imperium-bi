@@ -1,26 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "cleanUrls": true,
-  "crons": [
-    { "path": "/api/cron-digest", "schedule": "0 7 * * 1" }
-  ],
+  "crons": [{ "path": "/api/cron-digest", "schedule": "0 7 * * 1" }],
   "redirects": [
     {
       "source": "/(.*)",
       "has": [{ "type": "host", "value": "www.imperium-bi.co.uk" }],
       "destination": "https://imperium-bi.co.uk/$1",
       "permanent": true
-    }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "geolocation=(), microphone=(), camera=()" }
-      ]
     }
   ]
 }

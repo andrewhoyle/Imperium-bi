@@ -1,4 +1,7 @@
+node_modules
+.next
 .vercel
-
-# Scratch / junk
+next-env.d.ts
+*.tsbuildinfo
 test.png
+.env*.local
