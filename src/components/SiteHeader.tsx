@@ -26,7 +26,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-line bg-bg/80 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
         <Link href="/" aria-label="Imperium BI home" className="flex items-center gap-2.5">
-          <Image src="/logo.png" alt="" width={44} height={30} priority className="h-8 w-auto" />
+          <Image src="/logo.png" alt="" width={94} height={64} priority className="h-14 w-auto sm:h-16" />
           <Wordmark />
         </Link>
 
