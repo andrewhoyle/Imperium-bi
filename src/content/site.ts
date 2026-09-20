@@ -476,6 +476,50 @@ export const fractionalHow: { title: string; blurb: string }[] = [
   },
 ];
 
+export const advantages: { title: string; blurb: string }[] = [
+  {
+    title: "Finance brain, engineer's hands",
+    blurb:
+      "CIMA-qualified (ACMA · CGMA) with an advanced IT skillset — I own the numbers and build the automation behind them. Rare in one person, and the reason the work actually sticks.",
+  },
+  {
+    title: "Automation & process re-engineering",
+    blurb:
+      "SQL, Power BI and Python put to work re-engineering the process, not just documenting it — closes taken from weeks to days and manual reporting replaced with something that runs itself.",
+  },
+  {
+    title: "25 years where numbers matter",
+    blurb:
+      "Fourteen years in investment-banking product control, then SME financial control, FP&A and interim work for RWE, P&O Ferries, Bellway and a $400m agritech group.",
+  },
+  {
+    title: "Owner-led, senior from day one",
+    blurb:
+      "You work directly with the specialist doing the work — no account managers, no ramp-up, productive from the first day.",
+  },
+];
+
+export const howToBook: { n: string; title: string; blurb: string }[] = [
+  {
+    n: "01",
+    title: "Book a free discovery call",
+    blurb:
+      "A short call to understand your numbers, your systems and what's actually slowing you down. No cost, no obligation.",
+  },
+  {
+    n: "02",
+    title: "Choose how you work with me",
+    blurb:
+      "One-off project, interim cover, or a recurring slot — a day a month up to a day a week. Fixed price where it fits; rolling and cancel-anytime where it doesn't.",
+  },
+  {
+    n: "03",
+    title: "I deliver — and hand it over",
+    blurb:
+      "Real things shipped in short iterations, then documented and handed over so your finance function keeps running after I'm gone.",
+  },
+];
+
 export type Step = { n: string; title: string; blurb: string };
 export const process: Step[] = [
   {

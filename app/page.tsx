@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Container, Section, SectionHeading, ButtonLink, Card } from "@/src/components/ui";
-import { site, stats, clients, banking } from "@/src/content/site";
+import { site, stats, clients, banking, advantages, howToBook } from "@/src/content/site";
 
 export default function HomePage() {
   return (
@@ -64,13 +64,13 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="What we do"
             title="Own the numbers — then make the data work."
-            lead="Senior finance leadership and hands-on delivery, from someone who builds the thing as well as advising on it."
+            lead="A CIMA-qualified finance leader with an advanced IT skillset. I don't just advise — I build: automating and re-engineering the processes behind the numbers, so the reporting ends up running itself."
           />
           <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3">
             <Card>
               <h3 className="font-display text-lg font-semibold text-white">Finance &amp; FP&amp;A</h3>
               <p className="mt-2 text-sm text-muted">
-                Interim FC, month-end automation, FP&amp;A, board reporting and controls — the numbers, owned end to end.
+                Interim FC cover that owns month-end, FP&amp;A and board reporting — then automates the close so it runs in days, not weeks.
               </p>
               <Link href="/finance" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand hover:text-white">
                 Explore finance <ArrowRight className="h-4 w-4" />
@@ -98,21 +98,48 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* Book it your way */}
-      <Section alt>
+      {/* Why Imperium */}
+      <Section>
         <Container>
-          <div className="rounded-2xl border border-line bg-bg-soft p-8 text-center sm:p-12">
-            <p className="font-display text-[0.58rem] uppercase tracking-[0.4em] text-brand">Flexible</p>
-            <h2 className="mt-3 font-display text-2xl font-semibold text-white sm:text-3xl">
-              Book it your way — one-off or recurring.
-            </h2>
-            <p className="mx-auto mt-3 max-w-2xl leading-relaxed text-muted">
-              A single project, a one-off call, or a regular slot — weekly, monthly, a day a month, or whatever
-              cadence suits you. You choose exactly how much support and how often; scale it up or down, or stop, any
-              time.
-            </p>
-            <div className="mt-6 flex flex-wrap justify-center gap-2">
-              {["One-off", "Weekly", "Monthly", "A day a month", "Ongoing", "Whatever suits you"].map((c) => (
+          <SectionHeading
+            eyebrow="Why Imperium"
+            title="A rare combination — and the reason it sticks."
+            lead="Most finance people can tell you what the numbers say. Most IT people can't read a balance sheet. I do both, so the fix is built in, not just recommended."
+          />
+          <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2">
+            {advantages.map((a) => (
+              <Card key={a.title}>
+                <h3 className="font-display text-lg font-semibold text-white">{a.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{a.blurb}</p>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* How it works */}
+      <Section>
+        <Container>
+          <SectionHeading
+            eyebrow="How it works"
+            title="Simple to start — book it your way."
+            lead="A single project, a one-off call, or a regular slot — weekly, monthly, a day a month, or whatever cadence suits you. Scale it up or down, or stop, any time."
+          />
+          <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3">
+            {howToBook.map((s) => (
+              <Card key={s.n}>
+                <div className="font-display text-2xl font-bold text-brand">{s.n}</div>
+                <h3 className="mt-3 font-display text-lg font-semibold text-white">{s.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{s.blurb}</p>
+              </Card>
+            ))}
+          </div>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <ButtonLink href="/contact" variant="primary">
+              Book a call <ArrowRight className="h-4 w-4" />
+            </ButtonLink>
+            <div className="flex flex-wrap gap-2">
+              {["One-off", "Weekly", "Monthly", "A day a month", "Ongoing"].map((c) => (
                 <span
                   key={c}
                   className="rounded-full border border-line px-3 py-1.5 font-display text-[0.6rem] uppercase tracking-[0.12em] text-muted"
@@ -120,11 +147,6 @@ export default function HomePage() {
                   {c}
                 </span>
               ))}
-            </div>
-            <div className="mt-8 flex justify-center">
-              <ButtonLink href="/contact" variant="primary">
-                Book a call <ArrowRight className="h-4 w-4" />
-              </ButtonLink>
             </div>
           </div>
         </Container>
