@@ -22,10 +22,9 @@ export default function FractionalPage() {
             I learn your business — then <span className="text-gradient">automate</span> it.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
-            This isn&apos;t a spare pair of FD hands. I come in, learn how your business actually works, and
-            re-engineer the finance function around it — automating the close, the reporting and the manual grind. A
-            day a week or a day a month, for a fraction of the cost of a full-time hire — leaving behind a finance
-            function that runs itself.
+            I come in, learn how your business actually works, and re-engineer the finance function around it —
+            automating the close, the reporting and the manual grind. A day a week or a day a month, for a fraction of
+            the cost of a full-time hire — leaving behind a finance function that runs itself.
           </p>
           <div className="mt-8">
             <ButtonLink href="/contact" variant="white">
