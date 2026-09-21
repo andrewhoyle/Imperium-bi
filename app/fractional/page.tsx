@@ -6,7 +6,7 @@ import { engagements, fractionalAdvantages, fractionalHow, process } from "@/src
 export const metadata: Metadata = {
   title: "Fractional finance leadership",
   description:
-    "A finance director at a fraction of the cost. Fractional finance leadership — a day a week or month to streamline, automate and keep your numbers board-ready, without a full-time hire.",
+    "Fractional finance leadership that automates. I learn how your business works, then re-engineer and automate the finance function around it — a day a week or month, for a fraction of the cost of a full-time hire.",
   alternates: { canonical: "/fractional" },
 };
 
@@ -19,12 +19,13 @@ export default function FractionalPage() {
         <Container className="relative z-10 py-20 sm:py-28">
           <p className="font-display text-[0.62rem] uppercase tracking-[0.4em] text-brand">Fractional</p>
           <h1 className="mt-4 max-w-3xl font-display text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-6xl">
-            A finance director, a <span className="text-gradient">fraction</span> of the cost.
+            I learn your business — then <span className="text-gradient">automate</span> it.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
-            Growing businesses need senior finance expertise long before they can justify a full-time FD. Fractional
-            finance leadership gives you that expertise on tap — a day a week or a day a month to streamline, automate
-            and keep the numbers board-ready — for a fraction of the cost of a hire.
+            This isn&apos;t a spare pair of FD hands. I come in, learn how your business actually works, and
+            re-engineer the finance function around it — automating the close, the reporting and the manual grind. A
+            day a week or a day a month, for a fraction of the cost of a full-time hire — leaving behind a finance
+            function that runs itself.
           </p>
           <div className="mt-8">
             <ButtonLink href="/contact" variant="white">
