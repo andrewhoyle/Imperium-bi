@@ -25,6 +25,7 @@ export const nav: { label: string; href: string }[] = [
   { label: "Fractional", href: "/fractional" },
   { label: "Finance", href: "/finance" },
   { label: "Data & BI", href: "/data-bi" },
+  { label: "AI", href: "/ai" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -388,6 +389,59 @@ export const aiItems: AiItem[] = [
       "We integrate AI into your day-to-day workflows and bring your team with it, so the change actually sticks.",
   },
 ];
+
+export const aiSite = {
+  name: "AIStrategise",
+  url: "https://aistrategise.com",
+  tagline: "Practical AI — built and governed.",
+  lead: "AI only earns its place when it's pointed at the right problem and kept under control. Through AIStrategise — Andrew's dedicated AI practice — Imperium designs, builds and governs real AI systems: boardroom-level strategy paired with hands-on engineering, focused on measurable outcomes rather than hype.",
+};
+
+export const aiServices: { name: string; sector: string; blurb: string }[] = [
+  {
+    name: "AI & LLM automation",
+    sector: "Automation",
+    blurb:
+      "Large language models integrated into real workflows — natural-language querying, drafting and back-office automation that saves hours, not slides.",
+  },
+  {
+    name: "Governed AI & agents",
+    sector: "Governance",
+    blurb:
+      "AI agents with approval workflows and full audit trails, so automation stays accountable — built for regulated environments.",
+  },
+  {
+    name: "AI strategy & roadmaps",
+    sector: "Strategy",
+    blurb:
+      "Costed, prioritised adoption plans tied to business outcomes: where AI actually pays off, and a realistic path to get there.",
+  },
+  {
+    name: "Data platforms for AI",
+    sector: "Data",
+    blurb:
+      "The governed, scalable data foundations that make AI trustworthy — the same rigour Imperium brings to finance data.",
+  },
+  {
+    name: "Custom AI software & products",
+    sector: "Build",
+    blurb:
+      "Full-stack, production-grade AI applications, built end to end — not proof-of-concept demos that never ship.",
+  },
+  {
+    name: "AI enablement & assurance",
+    sector: "Adoption",
+    blurb:
+      "Training, visibility and assurance so your team uses AI with confidence — and you can see exactly what it's doing.",
+  },
+];
+
+export const aiSuite = {
+  name: "Imperium Suite",
+  blurb:
+    "AIStrategise's flagship governed-AI platform (patents pending) — a set of components for building, running and controlling AI agents safely.",
+  components: ["AgentFlow", "MeAgent", "Agent Shield", "AISight"],
+};
 
 export type Engagement = { name: string; tag: string; blurb: string; points: string[] };
 export const engagements: Engagement[] = [
