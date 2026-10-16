@@ -32,7 +32,7 @@ const sections: { h: string; body: React.ReactNode }[] = [
   },
   {
     h: "4. Retention",
-    body: "Enquiry data and prospect data are kept no longer than 24 months from the last meaningful interaction, then deleted. Opt-out records are kept indefinitely solely to honour your request.",
+    body: "We keep enquiry and business-contact data for as long as it remains relevant to the purpose for which we hold it (responding to you, or ongoing business development), and no longer than is necessary for that purpose; there is no fixed deletion period. You can ask us to erase your data at any time (see your rights below). Opt-out records are kept indefinitely solely to honour your request.",
   },
   {
     h: "5. Sharing",
