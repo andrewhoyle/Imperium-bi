@@ -14,7 +14,8 @@ import {
 import { buttonClass } from "@/src/components/ui";
 
 const CURRENT_CHOICE: Record<ConsentChoice, string> = {
-  accepted: "You accepted: we count your visits and remember this device.",
+  accepted:
+    "You accepted: we count your visits, remember this device and may record your session, fully masked.",
   rejected: "You rejected: we count your visits anonymously, without cookies.",
   objected: "You chose not to be counted: no analytics run on your visits.",
 };
@@ -95,10 +96,10 @@ export function CookieConsent() {
       </h2>
       <p className="mt-2 text-sm leading-relaxed text-muted">
         We count visits anonymously, without cookies, to improve the site. If you accept, we also
-        remember your device so we can understand how individual people use it. Either way we record
-        the pages you view and what you click, never what you type, using PostHog (hosted in the
-        EU). You can stop all counting below, or at any time under Cookie settings in the footer.
-        See our{" "}
+        remember your device so we can understand how individual people use it, and may record your
+        session with all text, images and inputs masked. Either way we record the pages you view and
+        what you click, never what you type, using PostHog (hosted in the EU). You can stop all
+        counting below, or at any time under Cookie settings in the footer. See our{" "}
         <Link href="/privacy" className="text-brand hover:underline">
           privacy notice
         </Link>
