@@ -19,6 +19,8 @@
  */
 import type { PostHog, PostHogConfig } from "posthog-js";
 
+import { scrubSnapshotData } from "./replay-scrub";
+
 /** Where the visitor's choice is remembered. */
 export const CONSENT_STORAGE_KEY = "ibi-cookie-consent";
 /** Fired on window to reopen the cookie banner. */
@@ -105,6 +107,8 @@ export function posthogConfig(): Partial<PostHogConfig> {
       // Never network headers or bodies, whatever the project's settings say.
       recordHeaders: false,
       recordBody: false,
+      // Uncompressed, so before_send can scrub element attributes and addresses.
+      compress_events: false,
     },
     // Nor console logs inside a recording.
     enable_recording_console_log: false,
@@ -128,8 +132,16 @@ export function posthogConfig(): Partial<PostHogConfig> {
     // leaves the browser.
     before_send: (event) => {
       if (!event || current === "objected") return null;
-      const scrubbed = scrubEvent(event);
+      // Replay snapshots leave only for a visitor who accepted.
+      if (event.event === "$snapshot" && current !== "accepted") return null;
+      // Snapshots are rrweb events: their element attributes and addresses are scrubbed
+      // on their own (the recorder already masked the text).
+      const { $snapshot_data: snapshot, ...rest } = event.properties ?? {};
+      const scrubbed = scrubEvent({ ...event, properties: rest });
       scrubbed.properties = { ...scrubbed.properties, app: APP_SLUG };
+      if (snapshot !== undefined) {
+        scrubbed.properties.$snapshot_data = scrubSnapshotData(snapshot, scrubText);
+      }
       return scrubbed;
     },
   };

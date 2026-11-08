@@ -2,7 +2,7 @@
   "name": "imperium-bi-site",
   "version": "1.0.0",
   "private": true,
-  "description": "Imperium Business Intelligence Ltd — finance, BI & AI consultancy website.",
+  "description": "Imperium Business Intelligence Ltd \u2014 finance, BI & AI consultancy website.",
   "engines": {
     "node": ">=20.11.0 <23"
   },
@@ -14,7 +14,8 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "test": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./scripts/test-resolve.mjs --test \"src/**/*.test.ts\""
   },
   "dependencies": {
     "@vercel/analytics": "^1.4.1",
