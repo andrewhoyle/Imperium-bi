@@ -4,7 +4,8 @@ import { site } from "@/src/content/site";
 
 export const metadata: Metadata = {
   title: "Privacy Notice",
-  description: "How Imperium Business Intelligence Ltd handles enquiry and business-development data.",
+  description:
+    "How Imperium Business Intelligence Ltd handles enquiry and business-development data.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -13,8 +14,8 @@ const sections: { h: string; body: React.ReactNode }[] = [
     h: "1. Who we are",
     body: (
       <>
-        {site.legalName}, registered in England &amp; Wales, company no. {site.companyNo}, registered office{" "}
-        {site.address}. We are the data controller. Contact:{" "}
+        {site.legalName}, registered in England &amp; Wales, company no. {site.companyNo},
+        registered office {site.address}. We are the data controller. Contact:{" "}
         <a className="text-brand hover:underline" href={`mailto:${site.email}`}>
           {site.email}
         </a>
@@ -36,15 +37,21 @@ const sections: { h: string; body: React.ReactNode }[] = [
   },
   {
     h: "5. Sharing",
-    body: "We do not sell your data. Reputable processors (email delivery, hosting and, if you accept analytics cookies, PostHog analytics) act on our instructions under agreements.",
+    body: "We do not sell your data. Reputable processors (email delivery, hosting and PostHog analytics, hosted in the EU) act on our instructions under agreements.",
   },
   {
     h: "6. Your rights",
     body: (
       <>
-        Access, rectification, erasure, restriction, objection, portability — and you can object to marketing at any
-        time (email above) and we&apos;ll stop. Complaints: the Information Commissioner&apos;s Office (
-        <a className="text-brand hover:underline" href="https://ico.org.uk" target="_blank" rel="noopener noreferrer">
+        Access, rectification, erasure, restriction, objection, portability — and you can object to
+        marketing at any time (email above) and we&apos;ll stop. Complaints: the Information
+        Commissioner&apos;s Office (
+        <a
+          className="text-brand hover:underline"
+          href="https://ico.org.uk"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           ico.org.uk
         </a>
         ).
@@ -53,7 +60,37 @@ const sections: { h: string; body: React.ReactNode }[] = [
   },
   {
     h: "7. Cookies & analytics",
-    body: "This website uses privacy-friendly, cookieless analytics (Vercel) to count visits. With your consent only, we also use PostHog analytics (hosted in the EU) to record the pages you view and what you click, never what you type; PostHog keeps an identifier for this in your browser's local storage. Until you accept in the cookie banner, the PostHog code is not loaded at all, and you can withdraw at any time under “Cookie settings” in the footer, which also removes what PostHog stored. The site sets no marketing cookies and collects no special-category data.",
+    body: (
+      <>
+        <p>
+          The site sets no marketing cookies and collects no special-category data. We use PostHog
+          analytics (hosted in the EU, acting as our processor) in two ways.
+        </p>
+        <p className="mt-2">
+          <strong className="text-white">Anonymous counting, without cookies.</strong> By default we
+          count the pages viewed, clicks (never what you type), browser and device type and
+          approximate region, to understand and improve the site. Nothing is stored on or read from
+          your device for this, no identifier is kept for you and we cannot link visits to a person;
+          your IP address and browser details are used only briefly to produce aggregate counts.
+          Legal basis: our legitimate interests in understanding and improving the service. You can
+          object at any time under &ldquo;Cookie settings&rdquo; in the footer by choosing
+          &ldquo;Don&apos;t count my visits at all&rdquo;; we then send nothing and remember only
+          that choice, in your browser&apos;s local storage.
+        </p>
+        <p className="mt-2">
+          <strong className="text-white">Analytics with device storage, only if you accept.</strong>{" "}
+          If you choose &ldquo;Accept&rdquo;, PostHog also keeps an identifier in your
+          browser&apos;s local storage so it can recognise your device across visits and show us how
+          individual visitors use the site. Legal basis: your consent, which you can withdraw at any
+          time under &ldquo;Cookie settings&rdquo;; withdrawing removes what PostHog stored and
+          returns you to anonymous counting.
+        </p>
+        <p className="mt-2">
+          We also use Vercel Web Analytics, which sets no cookies and counts visits without
+          identifying you.
+        </p>
+      </>
+    ),
   },
 ];
 
@@ -68,7 +105,7 @@ export default function PrivacyPage() {
           {sections.map((s) => (
             <section key={s.h}>
               <h2 className="font-display text-lg font-semibold text-white">{s.h}</h2>
-              <p className="mt-2">{s.body}</p>
+              <div className="mt-2">{s.body}</div>
             </section>
           ))}
         </div>
