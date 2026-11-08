@@ -93,17 +93,91 @@ export function posthogConfig(): Partial<PostHogConfig> {
     // Clicks, form submits and link follows. Typed text is never captured.
     autocapture: true,
     disable_session_recording: true,
+    // Not described in the privacy notice, so never turned on from the PostHog project:
+    // error reports (messages and stack traces), heatmaps (mouse movement and scrolling)
+    // and page-speed measurements.
+    capture_exceptions: false,
+    capture_heatmaps: false,
+    capture_performance: false,
+    // Send each event straight away. A batch waits a few seconds in memory, so events
+    // queued just before "Don't count my visits" would otherwise still go out after it.
+    request_batching: false,
     // Unused here, and they would keep state in the browser.
     disable_surveys: true,
     disable_conversations: true,
     disable_product_tours: true,
-    // Last line of defence: an objection drops every event, and every event is tagged.
+    // Last line of defence: an objection drops every event, every event is tagged, and
+    // no query string, fragment or email address leaves the browser.
     before_send: (event) => {
       if (!event || current === "objected") return null;
-      event.properties = { ...event.properties, app: APP_SLUG };
-      return event;
+      const scrubbed = scrubEvent(event);
+      scrubbed.properties = { ...scrubbed.properties, app: APP_SLUG };
+      return scrubbed;
     },
   };
+}
+
+const EMAIL = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi;
+/** An absolute URL inside longer text, such as the element chain PostHog builds for a click. */
+const EMBEDDED_URL = /https?:\/\/[^\s"'<>]+/gi;
+/** An href attribute in that element chain, which may hold a relative URL. */
+const EMBEDDED_HREF = /(href=")([^"]*)(")/gi;
+
+/**
+ * Drops the query string and fragment from a URL, keeping the origin and path.
+ * Search terms, tokens and email addresses in links pasted to the site travel in
+ * these, so they are never sent anywhere.
+ */
+export function stripUrl(url: string): string {
+  const cut = url.search(/[?#]/);
+  return cut === -1 ? url : url.slice(0, cut);
+}
+
+/** Removes query strings, fragments and email addresses from one piece of text. */
+export function scrubText(value: string): string {
+  const whole = /^(?:https?:\/\/|\/)/i.test(value) ? stripUrl(value) : value;
+  return whole
+    .replace(EMBEDDED_URL, (url) => stripUrl(url))
+    .replace(
+      EMBEDDED_HREF,
+      (_m, open: string, href: string, close: string) => `${open}${stripUrl(href)}${close}`,
+    )
+    .replace(EMAIL, "[email]");
+}
+
+function scrubValue(value: unknown): unknown {
+  if (typeof value === "string") return scrubText(value);
+  if (Array.isArray(value)) return value.map(scrubValue);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, inner]) => [scrubText(key), scrubValue(inner)]),
+    );
+  }
+  return value;
+}
+
+/**
+ * Applies scrubText to every string in an event's properties (page and referrer
+ * URLs, the clicked element's text and attributes, mailto links) and its person
+ * properties.
+ */
+export function scrubEvent<T extends { properties?: object; $set?: object; $set_once?: object }>(
+  event: T,
+): T {
+  const out = { ...event };
+  for (const field of ["properties", "$set", "$set_once"] as const) {
+    if (out[field]) out[field] = scrubValue(out[field]) as T[typeof field];
+  }
+  return out;
+}
+
+/**
+ * Vercel Web Analytics hook: an objection stops it too, and it sends the path
+ * without the query string or fragment.
+ */
+export function vercelBeforeSend<E extends { url: string }>(event: E): E | null {
+  if (readStoredConsent() === "objected") return null;
+  return { ...event, url: stripUrl(event.url) };
 }
 
 async function load(): Promise<void> {

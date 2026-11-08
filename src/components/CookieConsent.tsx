@@ -31,6 +31,8 @@ export function CookieConsent() {
   const headingRef = useRef<HTMLHeadingElement>(null);
   /** Focus moves to the banner only when the visitor asked for it, not on first load. */
   const reopened = useRef(false);
+  /** Where focus was when the banner was reopened, so it can go back there. */
+  const returnFocus = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (!isAnalyticsConfigured()) return;
@@ -41,6 +43,8 @@ export function CookieConsent() {
 
     const onOpen = () => {
       reopened.current = true;
+      returnFocus.current =
+        document.activeElement instanceof HTMLElement ? document.activeElement : null;
       setChoice(readStoredConsent());
       setOpen(true);
     };
@@ -70,6 +74,9 @@ export function CookieConsent() {
     saveConsent(next);
     setChoice(next);
     setOpen(false);
+    // The banner unmounts; without this, keyboard focus would fall back to the page start.
+    returnFocus.current?.focus();
+    returnFocus.current = null;
   };
 
   return (
