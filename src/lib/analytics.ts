@@ -107,7 +107,8 @@ export function posthogConfig(): Partial<PostHogConfig> {
     disable_conversations: true,
     disable_product_tours: true,
     // Last line of defence: an objection drops every event, every event is tagged, and
-    // no query string, fragment or email address leaves the browser.
+    // no fragment, email address or query parameter but the utm_* campaign tags
+    // leaves the browser.
     before_send: (event) => {
       if (!event || current === "objected") return null;
       const scrubbed = scrubEvent(event);
@@ -123,17 +124,33 @@ const EMBEDDED_URL = /https?:\/\/[^\s"'<>]+/gi;
 /** An href attribute in that element chain, which may hold a relative URL. */
 const EMBEDDED_HREF = /(href=")([^"]*)(")/gi;
 
+/** Campaign tags kept on URLs; every other query parameter is dropped. */
+const CAMPAIGN_PARAMS = new Set([
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_term",
+  "utm_content",
+]);
+
 /**
- * Drops the query string and fragment from a URL, keeping the origin and path.
- * Search terms, tokens and email addresses in links pasted to the site travel in
- * these, so they are never sent anywhere.
+ * Drops the fragment and every query parameter except the utm_* campaign tags
+ * from a URL, keeping the origin and path. Search terms, tokens and email
+ * addresses in links pasted to the site travel in these, so they are never sent
+ * anywhere.
  */
 export function stripUrl(url: string): string {
-  const cut = url.search(/[?#]/);
-  return cut === -1 ? url : url.slice(0, cut);
+  const withoutFragment = url.replace(/#[\s\S]*$/, "");
+  const start = withoutFragment.indexOf("?");
+  if (start === -1) return withoutFragment;
+  const kept = withoutFragment
+    .slice(start + 1)
+    .split("&")
+    .filter((pair) => CAMPAIGN_PARAMS.has(pair.split("=")[0]));
+  return withoutFragment.slice(0, start) + (kept.length > 0 ? `?${kept.join("&")}` : "");
 }
 
-/** Removes query strings, fragments and email addresses from one piece of text. */
+/** Removes query strings (apart from campaign tags), fragments and email addresses from one piece of text. */
 export function scrubText(value: string): string {
   const whole = /^(?:https?:\/\/|\/)/i.test(value) ? stripUrl(value) : value;
   return whole
@@ -173,7 +190,7 @@ export function scrubEvent<T extends { properties?: object; $set?: object; $set_
 
 /**
  * Vercel Web Analytics hook: an objection stops it too, and it sends the path
- * without the query string or fragment.
+ * and campaign tags without the rest of the query string or the fragment.
  */
 export function vercelBeforeSend<E extends { url: string }>(event: E): E | null {
   if (readStoredConsent() === "objected") return null;
