@@ -36,7 +36,7 @@ const sections: { h: string; body: React.ReactNode }[] = [
   },
   {
     h: "5. Sharing",
-    body: "We do not sell your data. Reputable processors (email delivery, hosting) act on our instructions under agreements.",
+    body: "We do not sell your data. Reputable processors (email delivery, hosting and, if you accept analytics cookies, PostHog analytics) act on our instructions under agreements.",
   },
   {
     h: "6. Your rights",
@@ -53,7 +53,7 @@ const sections: { h: string; body: React.ReactNode }[] = [
   },
   {
     h: "7. Cookies & analytics",
-    body: "This website uses privacy-friendly, cookieless analytics (Vercel) to count visits. It sets no marketing or tracking cookies and collects no special-category data.",
+    body: "This website uses privacy-friendly, cookieless analytics (Vercel) to count visits. With your consent only, we also use PostHog analytics (hosted in the EU) to record the pages you view and what you click, never what you type; PostHog keeps an identifier for this in your browser's local storage. Until you accept in the cookie banner, the PostHog code is not loaded at all, and you can withdraw at any time under “Cookie settings” in the footer, which also removes what PostHog stored. The site sets no marketing cookies and collects no special-category data.",
   },
 ];
 
@@ -63,7 +63,7 @@ export default function PrivacyPage() {
       <Container className="max-w-3xl">
         <p className="font-display text-[0.58rem] uppercase tracking-[0.4em] text-brand">Legal</p>
         <h1 className="mt-3 font-display text-4xl font-semibold text-white">Privacy Notice</h1>
-        <p className="mt-2 text-sm text-faint">{site.legalName} · Last updated: 18 September 2026</p>
+        <p className="mt-2 text-sm text-faint">{site.legalName} · Last updated: 8 November 2026</p>
         <div className="mt-8 space-y-6 leading-relaxed text-muted">
           {sections.map((s) => (
             <section key={s.h}>
