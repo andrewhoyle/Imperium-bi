@@ -9,7 +9,9 @@
  *    aggregate count ("Cookieless server hash mode" must be on in the project).
  * 2. "Accept": full analytics with consent. Opting in switches PostHog to
  *    local-storage persistence with a fresh device id; the cookieless state is
- *    reset first, so nothing from before acceptance carries over.
+ *    reset first, so nothing from before acceptance carries over. Session replay
+ *    runs only in this tier, with all text, images and inputs masked, and stops
+ *    on withdrawal or objection.
  * 3. "Don't count my visits" (an objection): nothing is sent at all and
  *    PostHog's storage is cleared. Only the choice itself is remembered.
  *
@@ -92,7 +94,22 @@ export function posthogConfig(): Partial<PostHogConfig> {
     capture_pageleave: true,
     // Clicks, form submits and link follows. Typed text is never captured.
     autocapture: true,
+    // Session replay never starts on its own: only after Accept (consent), see
+    // sync(). Every piece of text and every image, video, canvas and embed is
+    // masked or blocked, and inputs are never recorded.
     disable_session_recording: true,
+    session_recording: {
+      maskAllInputs: true,
+      maskTextSelector: "*",
+      blockSelector: "img, video, canvas, iframe, [data-ph-block]",
+      // Never network headers or bodies, whatever the project's settings say.
+      recordHeaders: false,
+      recordBody: false,
+    },
+    // Nor console logs inside a recording.
+    enable_recording_console_log: false,
+    // The recorder is bundled, so nothing is ever fetched from PostHog's CDN.
+    disable_external_dependency_loading: true,
     // Not described in the privacy notice, so never turned on from the PostHog project:
     // error reports (messages and stack traces), heatmaps (mouse movement and scrolling)
     // and page-speed measurements.
@@ -224,7 +241,11 @@ function sync(posthog: PostHog): void {
   if (current === "accepted") {
     // Resets the cookieless state, then persists a fresh device id.
     if (!posthog.has_opted_in_capturing()) posthog.opt_in_capturing({ captureEventName: false });
-  } else if (posthog.has_opted_in_capturing() || current === "objected") {
+    void startRecording(posthog);
+  } else {
+    posthog.stopSessionRecording();
+  }
+  if (current !== "accepted" && (posthog.has_opted_in_capturing() || current === "objected")) {
     // Back to cookieless (opting out resets the identity); then drop the stored opt-out
     // flag too, as the anonymous tier keeps nothing in the browser.
     posthog.opt_out_capturing();
@@ -232,6 +253,21 @@ function sync(posthog: PostHog): void {
   }
   // Opting in or out resets super properties, so tag the app again.
   posthog.register({ app: APP_SLUG });
+}
+
+/**
+ * Starts masked session replay for a visitor who accepted. The recorder is
+ * bundled (posthog-recorder carries everything replay needs) and loaded only on
+ * Accept.
+ */
+async function startRecording(posthog: PostHog): Promise<void> {
+  try {
+    await import("posthog-js/dist/posthog-recorder");
+  } catch {
+    return;
+  }
+  // The visitor may have changed their mind while the recorder loaded.
+  if (current === "accepted") posthog.startSessionRecording();
 }
 
 /** Removes the opt-in, distinct id and session state PostHog keeps in the browser. */
