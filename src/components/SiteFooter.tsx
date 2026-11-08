@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { nav, site } from "@/src/content/site";
 import { Container } from "@/src/components/ui";
+import { CookieSettingsButton } from "@/src/components/CookieConsent";
 
 export function SiteFooter() {
   return (
@@ -74,8 +75,9 @@ export function SiteFooter() {
         <span>
           <Link href="/privacy" className="hover:text-accent">
             Privacy Notice
-          </Link>{" "}
-          · {site.address}
+          </Link>
+          <CookieSettingsButton before=" · " className="cursor-pointer hover:text-accent" /> ·{" "}
+          {site.address}
         </span>
       </Container>
     </footer>

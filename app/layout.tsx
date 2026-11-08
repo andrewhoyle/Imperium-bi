@@ -3,6 +3,7 @@ import { Montserrat, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "@/src/components/SiteHeader";
 import { SiteFooter } from "@/src/components/SiteFooter";
+import { CookieConsent } from "@/src/components/CookieConsent";
 import { Analytics } from "@vercel/analytics/next";
 import { site } from "@/src/content/site";
 
@@ -80,6 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <Analytics />
+        <CookieConsent />
       </body>
     </html>
   );
