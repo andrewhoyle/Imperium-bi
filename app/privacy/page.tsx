@@ -70,13 +70,14 @@ const sections: { h: string; body: React.ReactNode }[] = [
           <strong className="text-white">Anonymous counting, without cookies.</strong> By default we
           count the pages viewed, clicks (never what you type), browser and device type and
           approximate region, to understand and improve the site. We send page addresses without any
-          query string or fragment, and remove email addresses from what is clicked. Nothing is
-          stored on or read from your device for this, no identifier is kept for you and we cannot
-          link visits to a person; your IP address and browser details are used only briefly to
-          produce aggregate counts. Legal basis: our legitimate interests in understanding and
-          improving the service. You can object at any time under &ldquo;Cookie settings&rdquo; in
-          the footer by choosing &ldquo;Don&apos;t count my visits at all&rdquo;; we then send
-          nothing and remember only that choice, in your browser&apos;s local storage.
+          fragment or query string other than campaign tags (the utm_ parameters in links from
+          emails and adverts), and remove email addresses from what is clicked. Nothing is stored on
+          or read from your device for this, no identifier is kept for you and we cannot link visits
+          to a person; your IP address and browser details are used only briefly to produce
+          aggregate counts. Legal basis: our legitimate interests in understanding and improving the
+          service. You can object at any time under &ldquo;Cookie settings&rdquo; in the footer by
+          choosing &ldquo;Don&apos;t count my visits at all&rdquo;; we then send nothing and
+          remember only that choice, in your browser&apos;s local storage.
         </p>
         <p className="mt-2">
           <strong className="text-white">Analytics with device storage, only if you accept.</strong>{" "}
@@ -85,6 +86,10 @@ const sections: { h: string; body: React.ReactNode }[] = [
           individual visitors use the site. Legal basis: your consent, which you can withdraw at any
           time under &ldquo;Cookie settings&rdquo;; withdrawing removes what PostHog stored and
           returns you to anonymous counting.
+        </p>
+        <p className="mt-2">
+          PostHog analytics data is kept for 12 months and then deleted. IP addresses are discarded,
+          not stored with it.
         </p>
         <p className="mt-2">
           We also use Vercel Web Analytics, which sets no cookies and counts visits without
