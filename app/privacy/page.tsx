@@ -69,13 +69,14 @@ const sections: { h: string; body: React.ReactNode }[] = [
         <p className="mt-2">
           <strong className="text-white">Anonymous counting, without cookies.</strong> By default we
           count the pages viewed, clicks (never what you type), browser and device type and
-          approximate region, to understand and improve the site. Nothing is stored on or read from
-          your device for this, no identifier is kept for you and we cannot link visits to a person;
-          your IP address and browser details are used only briefly to produce aggregate counts.
-          Legal basis: our legitimate interests in understanding and improving the service. You can
-          object at any time under &ldquo;Cookie settings&rdquo; in the footer by choosing
-          &ldquo;Don&apos;t count my visits at all&rdquo;; we then send nothing and remember only
-          that choice, in your browser&apos;s local storage.
+          approximate region, to understand and improve the site. We send page addresses without any
+          query string or fragment, and remove email addresses from what is clicked. Nothing is
+          stored on or read from your device for this, no identifier is kept for you and we cannot
+          link visits to a person; your IP address and browser details are used only briefly to
+          produce aggregate counts. Legal basis: our legitimate interests in understanding and
+          improving the service. You can object at any time under &ldquo;Cookie settings&rdquo; in
+          the footer by choosing &ldquo;Don&apos;t count my visits at all&rdquo;; we then send
+          nothing and remember only that choice, in your browser&apos;s local storage.
         </p>
         <p className="mt-2">
           <strong className="text-white">Analytics with device storage, only if you accept.</strong>{" "}
@@ -87,7 +88,7 @@ const sections: { h: string; body: React.ReactNode }[] = [
         </p>
         <p className="mt-2">
           We also use Vercel Web Analytics, which sets no cookies and counts visits without
-          identifying you.
+          identifying you. Choosing &ldquo;Don&apos;t count my visits at all&rdquo; stops it too.
         </p>
       </>
     ),

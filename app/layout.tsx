@@ -4,7 +4,7 @@ import "./globals.css";
 import { SiteHeader } from "@/src/components/SiteHeader";
 import { SiteFooter } from "@/src/components/SiteFooter";
 import { CookieConsent } from "@/src/components/CookieConsent";
-import { Analytics } from "@vercel/analytics/next";
+import { VercelAnalytics } from "@/src/components/VercelAnalytics";
 import { site } from "@/src/content/site";
 
 const heading = Montserrat({
@@ -36,7 +36,12 @@ export const metadata: Metadata = {
     type: "website",
     images: ["/og-image.png"],
   },
-  twitter: { card: "summary_large_image", title: titleDefault, description, images: ["/og-image.png"] },
+  twitter: {
+    card: "summary_large_image",
+    title: titleDefault,
+    description,
+    images: ["/og-image.png"],
+  },
   robots: { index: true, follow: true },
 };
 
@@ -80,7 +85,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <Analytics />
+        <VercelAnalytics />
         <CookieConsent />
       </body>
     </html>
