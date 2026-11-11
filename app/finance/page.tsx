@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import { JsonLd } from "@/src/components/JsonLd";
 import { Container, Section, SectionHeading, ButtonLink, buttonClass } from "@/src/components/ui";
 import { ServiceGrid } from "@/src/components/ServiceGrid";
 import { financeServices, process, boardJudgement } from "@/src/content/site";
@@ -28,6 +30,18 @@ export default function FinancePage() {
       </Section>
 
       <Section dark className="!bg-deep">
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            name: boardJudgement.name,
+            url: boardJudgement.url,
+            description: boardJudgement.lead,
+            applicationCategory: "FinanceApplication",
+            operatingSystem: "Web",
+            offers: { "@type": "Offer", price: "50", priceCurrency: "GBP" },
+          }}
+        />
         <Container>
           <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2">
             <SectionHeading dark eyebrow={boardJudgement.eyebrow} title={boardJudgement.title} lead={boardJudgement.lead} />
@@ -49,6 +63,13 @@ export default function FinancePage() {
               </a>
             </div>
           </div>
+          <Image
+            src="/products/boardjudgement.webp"
+            alt="BoardJudgement reconciling sources into a board pack"
+            width={1200}
+            height={750}
+            className="mt-12 w-full rounded-xl border border-white/10 shadow-2xl"
+          />
         </Container>
       </Section>
 

@@ -1,7 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ShieldCheck } from "lucide-react";
 import { Container, Section, SectionHeading, ButtonLink, Card } from "@/src/components/ui";
-import { site, stats, clients, banking, advantages, howToBook, platforms, aiSite } from "@/src/content/site";
+import { site, stats, clients, banking, advantages, howToBook, platforms, aiSite, folioNamesProfile } from "@/src/content/site";
 
 export default function HomePage() {
   return (
@@ -128,23 +129,43 @@ export default function HomePage() {
           <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {platforms.map((p) => (
               <a key={p.name} href={p.url} target="_blank" rel="noopener noreferrer" className="block">
-                <Card className="h-full transition-colors hover:border-brand/40">
-                  <h3 className="flex items-center justify-between gap-2 font-display text-lg font-semibold text-white">
-                    {p.name} <ArrowUpRight className="h-4 w-4 shrink-0 text-brand" />
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{p.blurb}</p>
+                <Card className="h-full overflow-hidden !p-0 transition-colors hover:border-brand/40">
+                  <Image
+                    src={`/products/${p.slug}.webp`}
+                    alt={`${p.name} homepage`}
+                    width={1200}
+                    height={750}
+                    sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
+                    className="aspect-[16/10] w-full border-b border-line object-cover object-top"
+                  />
+                  <div className="p-6">
+                    <h3 className="flex items-center justify-between gap-2 font-display text-lg font-semibold text-white">
+                      {p.name} <ArrowUpRight className="h-4 w-4 shrink-0 text-brand" />
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">{p.blurb}</p>
+                  </div>
                 </Card>
               </a>
             ))}
           </div>
-          <a
-            href={`${aiSite.url}/products`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-brand hover:text-white"
-          >
-            See the full portfolio on AIStrategise <ArrowUpRight className="h-4 w-4" />
-          </a>
+          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <a
+              href={`${aiSite.url}/products`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-sm font-semibold text-brand hover:text-white"
+            >
+              See the full portfolio on AIStrategise <ArrowUpRight className="h-4 w-4" />
+            </a>
+            <a
+              href={folioNamesProfile}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm text-muted hover:text-white"
+            >
+              <ShieldCheck className="h-4 w-4 text-brand" /> Independently safety-checked on FolioNames
+            </a>
+          </div>
         </Container>
       </Section>
 

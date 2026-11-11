@@ -628,34 +628,43 @@ export const boardJudgement = {
 };
 
 /** Selection of production platforms built by Andrew — the full portfolio lives on AIStrategise. */
-export const platforms: { name: string; url: string; blurb: string }[] = [
+export const folioNamesProfile = "https://folionames.com/apps?developer=andrew-hoyle";
+
+/** `slug` names the screenshot at /products/<slug>.webp. */
+export const platforms: { name: string; slug: string; url: string; blurb: string }[] = [
   {
     name: "BoardJudgement",
+    slug: "boardjudgement",
     url: "https://boardjudgement.com",
     blurb: "Reconciles ledger and spreadsheet data into board packs and forecasts.",
   },
   {
     name: "GoPortal",
+    slug: "goportal",
     url: "https://goportal.io",
     blurb: "Joint-venture governance — budgets, partner voting, audit records.",
   },
   {
     name: "ProdXchange",
+    slug: "prodxchange",
     url: "https://prodxchange.com",
     blurb: "Sourcing, logistics, settlements and billing for produce brokers.",
   },
   {
     name: "JobFlowMe",
+    slug: "jobflowme",
     url: "https://jobflowme.com",
     blurb: "Garage workflow from job card and approvals to invoice and ledger.",
   },
   {
     name: "WalkQuote",
+    slug: "walkquote",
     url: "https://walkquote.com",
     blurb: "Spoken job walkthroughs turned into priced quotes and invoices.",
   },
   {
     name: "IMAISA",
+    slug: "imaisa",
     url: "https://imaisa.com",
     blurb: "Facilities and M&E operations, from building data to billing.",
   },

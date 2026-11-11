@@ -56,7 +56,14 @@ const jsonLd = {
   email: site.email,
   telephone: site.phone,
   areaServed: "GB",
-  founder: { "@type": "Person", name: "Andrew Hoyle", jobTitle: "Interim Financial Controller" },
+  founder: {
+    "@type": "Person",
+    name: "Andrew Hoyle",
+    jobTitle: "Interim Financial Controller",
+    hasCredential: "ACMA, CGMA (CIMA)",
+    sameAs: [site.linkedin],
+  },
+  subOrganization: { "@type": "Organization", name: "AIStrategise", url: "https://aistrategise.com" },
   address: {
     "@type": "PostalAddress",
     streetAddress: "29 Cliffe Avenue",
@@ -65,7 +72,7 @@ const jsonLd = {
     postalCode: "CT9 5DU",
     addressCountry: "GB",
   },
-  sameAs: [site.linkedin, "https://aistrategise.com"],
+  sameAs: [site.linkedin, "https://aistrategise.com", "https://folionames.com/apps?developer=andrew-hoyle"],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
