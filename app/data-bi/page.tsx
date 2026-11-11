@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/src/lib/seo";
 import { Container, Section, SectionHeading } from "@/src/components/ui";
 import { ServiceGrid } from "@/src/components/ServiceGrid";
 import { dataServices, aiItems } from "@/src/content/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Data, BI & AI",
   description:
-    "Dashboards, data pipelines, analytics, automation and practical AI — the same rigour applied to your data.",
-  alternates: { canonical: "/data-bi" },
-};
+    "Power BI dashboards, data pipelines, analytics, automation and practical AI, applying the same rigour to your data that we bring to your finances.",
+  path: "/data-bi",
+});
 
 export default function DataBiPage() {
   return (
@@ -16,6 +17,7 @@ export default function DataBiPage() {
       <Section>
         <Container>
           <SectionHeading
+            as="h1"
             eyebrow="Data, BI & AI"
             title="The same rigour, applied to your data."
             lead="Beyond finance, the same discipline for any team that needs it — dashboards, pipelines, analytics and practical AI."
@@ -45,8 +47,8 @@ export default function DataBiPage() {
             ))}
           </div>
           <p className="mt-6 max-w-2xl text-muted">
-            Need deeper AI — LLM automation, specialist agents or governed AI with Agent Shield? That&apos;s delivered
-            through our dedicated AI practice,{" "}
+            Need deeper AI — LLM automation, specialist agents or governed AI with Agent Shield?
+            That&apos;s delivered through our dedicated AI practice,{" "}
             <a
               href="https://aistrategise.com"
               target="_blank"

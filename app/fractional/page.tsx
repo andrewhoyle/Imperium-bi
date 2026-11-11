@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/src/lib/seo";
 import { ArrowRight } from "lucide-react";
 import { Container, Section, SectionHeading, ButtonLink, Card } from "@/src/components/ui";
 import { engagements, fractionalAdvantages, fractionalHow, process } from "@/src/content/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Fractional finance leadership",
   description:
-    "Fractional finance leadership that automates. I learn how your business works, then re-engineer and automate the finance function around it — a day a week or month, for a fraction of the cost of a full-time hire.",
-  alternates: { canonical: "/fractional" },
-};
+    "Fractional finance leadership from a day a month: I learn how your business works, then re-engineer and automate the finance function around it.",
+  path: "/fractional",
+});
 
 export default function FractionalPage() {
   return (

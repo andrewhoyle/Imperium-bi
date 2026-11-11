@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/src/lib/seo";
 import Image from "next/image";
 import { Container, Section, SectionHeading } from "@/src/components/ui";
 import { about, site, clients, banking } from "@/src/content/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
   description:
-    "Imperium Business Intelligence is led directly by Andrew Hoyle, ACMA CGMA — 25 years across investment banking, SME finance and FP&A.",
-  alternates: { canonical: "/about" },
-};
+    "Imperium Business Intelligence is led directly by Andrew Hoyle ACMA CGMA, with 25 years across investment-banking product control, SME finance and FP&A.",
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
@@ -20,7 +21,7 @@ export default function AboutPage() {
               <div className="h-32 w-32 overflow-hidden rounded-full border border-line">
                 <Image src="/andrew.jpg" alt="Andrew Hoyle" width={160} height={160} className="h-full w-full object-cover" />
               </div>
-              <p className="mt-5 font-display text-2xl font-bold text-white">{about.name}</p>
+              <h1 className="mt-5 font-display text-2xl font-bold text-white">{about.name}</h1>
               <p className="mt-1 font-display text-[0.62rem] uppercase tracking-[0.15em] text-muted">{about.title}</p>
               <div className="mt-5 flex flex-wrap gap-2">
                 {about.creds.map((c) => (
@@ -33,7 +34,7 @@ export default function AboutPage() {
                 href={site.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 inline-block border-b border-brand/40 pb-0.5 font-display text-[0.6rem] uppercase tracking-[0.15em] text-brand hover:text-white"
+                className="mt-6 inline-block border-b border-brand/40 py-2 font-display text-[0.6rem] uppercase tracking-[0.15em] text-brand hover:text-white"
               >
                 View LinkedIn profile →
               </a>

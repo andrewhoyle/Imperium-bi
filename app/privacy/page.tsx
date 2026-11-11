@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/src/lib/seo";
 import { Container, Section } from "@/src/components/ui";
 import { site } from "@/src/content/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Privacy Notice",
   description:
-    "How Imperium Business Intelligence Ltd handles enquiry and business-development data.",
-  alternates: { canonical: "/privacy" },
-};
+    "How Imperium Business Intelligence Ltd collects, uses and protects enquiry and business-development data, and how to exercise your data protection rights.",
+  path: "/privacy",
+});
 
 const sections: { h: string; body: React.ReactNode }[] = [
   {

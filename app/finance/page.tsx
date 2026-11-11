@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/src/lib/seo";
 import Image from "next/image";
 import { JsonLd } from "@/src/components/JsonLd";
 import { Container, Section, SectionHeading, ButtonLink, buttonClass } from "@/src/components/ui";
@@ -6,12 +7,12 @@ import { ServiceGrid } from "@/src/components/ServiceGrid";
 import { financeServices, process, boardJudgement } from "@/src/content/site";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Finance & FP&A",
   description:
-    "Interim financial control, month-end automation, FP&A, board reporting and controls — the numbers owned end to end.",
-  alternates: { canonical: "/finance" },
-};
+    "Interim financial control, month-end close automation, FP&A, board reporting and controls, with the numbers owned end to end by a CIMA-qualified FC.",
+  path: "/finance",
+});
 
 export default function FinancePage() {
   return (
@@ -19,6 +20,7 @@ export default function FinancePage() {
       <Section>
         <Container>
           <SectionHeading
+            as="h1"
             eyebrow="Finance & FP&A"
             title="Own the numbers, end to end."
             lead="Twenty-five years owning the numbers — investment-banking product control, SME financial control and FP&A. I stabilise finance functions under pressure, automate the close, and leave behind reporting your team can trust."
@@ -44,7 +46,12 @@ export default function FinancePage() {
         />
         <Container>
           <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2">
-            <SectionHeading dark eyebrow={boardJudgement.eyebrow} title={boardJudgement.title} lead={boardJudgement.lead} />
+            <SectionHeading
+              dark
+              eyebrow={boardJudgement.eyebrow}
+              title={boardJudgement.title}
+              lead={boardJudgement.lead}
+            />
             <div>
               <ul className="grid gap-3">
                 {boardJudgement.points.map((pt) => (
@@ -57,7 +64,9 @@ export default function FinancePage() {
                 href={boardJudgement.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={buttonClass("outline") + " mt-8 border-white/20 text-white hover:bg-white/10"}
+                className={
+                  buttonClass("outline") + " mt-8 border-white/20 text-white hover:bg-white/10"
+                }
               >
                 See {boardJudgement.name} <ArrowUpRight className="h-4 w-4" />
               </a>
@@ -68,6 +77,7 @@ export default function FinancePage() {
             alt="BoardJudgement reconciling sources into a board pack"
             width={1200}
             height={750}
+            sizes="(min-width: 1152px) 1088px, calc(100vw - 40px)"
             className="mt-12 w-full rounded-xl border border-white/10 shadow-2xl"
           />
         </Container>
@@ -79,7 +89,9 @@ export default function FinancePage() {
           <div className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
             {process.map((p) => (
               <div key={p.n} className="flex flex-col gap-3 bg-bg-soft p-6">
-                <span className="font-display text-2xl font-extrabold text-brand opacity-50">{p.n}</span>
+                <span className="font-display text-2xl font-extrabold text-brand opacity-50">
+                  {p.n}
+                </span>
                 <span className="font-display font-semibold text-white">{p.title}</span>
                 <span className="text-sm leading-relaxed text-muted">{p.blurb}</span>
               </div>

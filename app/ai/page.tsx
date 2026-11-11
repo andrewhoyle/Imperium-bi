@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/src/lib/seo";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { Container, Section, SectionHeading, ButtonLink, buttonClass } from "@/src/components/ui";
 import { aiSite, aiServices, aiSuite } from "@/src/content/site";
 
-export const metadata: Metadata = {
-  title: "AI",
+export const metadata: Metadata = pageMetadata({
+  title: "AI strategy & governed AI",
   description:
-    "Practical AI, built and governed — LLM automation, governed agents, AI strategy and custom AI software, through Imperium's dedicated AI practice, AIStrategise.",
-  alternates: { canonical: "/ai" },
-};
+    "Practical AI, built and governed: LLM automation, governed agents, AI strategy and custom AI software, through Imperium’s dedicated AI practice, AIStrategise.",
+  path: "/ai",
+});
 
 export default function AiPage() {
   return (
@@ -17,6 +18,7 @@ export default function AiPage() {
       <Section>
         <Container>
           <SectionHeading
+            as="h1"
             eyebrow="Artificial Intelligence"
             title={aiSite.tagline}
             lead={aiSite.lead}
@@ -62,11 +64,7 @@ export default function AiPage() {
       {/* Imperium Suite */}
       <Section>
         <Container>
-          <SectionHeading
-            eyebrow="The platform"
-            title={aiSuite.name}
-            lead={aiSuite.blurb}
-          />
+          <SectionHeading eyebrow="The platform" title={aiSuite.name} lead={aiSuite.blurb} />
           <div className="mt-8 flex flex-wrap gap-2">
             {aiSuite.components.map((c) => (
               <span
@@ -78,8 +76,8 @@ export default function AiPage() {
             ))}
           </div>
           <p className="mt-6 max-w-2xl text-sm text-faint">
-            Governance-first by design — approval workflows, audit trails and visibility built in, so AI stays
-            accountable in regulated and finance-critical environments.
+            Governance-first by design — approval workflows, audit trails and visibility built in,
+            so AI stays accountable in regulated and finance-critical environments.
           </p>
         </Container>
       </Section>
@@ -91,7 +89,8 @@ export default function AiPage() {
             Thinking about AI, but wary of the hype?
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-slate-300">
-            Start with a conversation about where it would genuinely pay off — no jargon, no obligation.
+            Start with a conversation about where it would genuinely pay off — no jargon, no
+            obligation.
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
             <ButtonLink href="/contact" variant="white">

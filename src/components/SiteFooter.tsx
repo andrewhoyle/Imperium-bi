@@ -25,7 +25,7 @@ export function SiteFooter() {
               href="https://aistrategise.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-brand hover:underline"
+              className="text-brand underline underline-offset-2 hover:text-white"
             >
               AIStrategise
             </a>
@@ -36,9 +36,13 @@ export function SiteFooter() {
           <div className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-faint">
             Explore
           </div>
-          <nav className="mt-3 flex flex-col gap-2">
+          <nav className="mt-2 flex flex-col gap-1">
             {nav.map((n) => (
-              <Link key={n.href} href={n.href} className="text-sm text-muted hover:text-accent">
+              <Link
+                key={n.href}
+                href={n.href}
+                className="inline-flex min-h-8 items-center text-sm text-muted hover:text-accent"
+              >
                 {n.label}
               </Link>
             ))}
@@ -49,18 +53,24 @@ export function SiteFooter() {
           <div className="font-display text-xs font-semibold uppercase tracking-[0.18em] text-faint">
             Contact
           </div>
-          <div className="mt-3 flex flex-col gap-2 text-sm text-muted">
-            <a href={`mailto:${site.email}`} className="hover:text-accent">
+          <div className="mt-2 flex flex-col gap-1 text-sm text-muted">
+            <a
+              href={`mailto:${site.email}`}
+              className="inline-flex min-h-8 items-center hover:text-accent"
+            >
               {site.email}
             </a>
-            <a href={`tel:${site.phone}`} className="hover:text-accent">
+            <a
+              href={`tel:${site.phone}`}
+              className="inline-flex min-h-8 items-center hover:text-accent"
+            >
               {site.phoneDisplay}
             </a>
             <a
               href={site.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-accent"
+              className="inline-flex min-h-8 items-center hover:text-accent"
             >
               LinkedIn
             </a>
@@ -73,10 +83,10 @@ export function SiteFooter() {
           © 2026 {site.legalName} · Company No. {site.companyNo}
         </span>
         <span>
-          <Link href="/privacy" className="hover:text-accent">
+          <Link href="/privacy" className="inline-block py-1 hover:text-accent">
             Privacy Notice
           </Link>
-          <CookieSettingsButton before=" · " className="cursor-pointer hover:text-accent" /> ·{" "}
+          <CookieSettingsButton before=" · " className="cursor-pointer py-1 hover:text-accent" /> ·{" "}
           {site.address}
         </span>
       </Container>

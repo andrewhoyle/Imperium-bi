@@ -73,7 +73,7 @@ export default function HomePage() {
               <p className="mt-2 text-sm text-muted">
                 Interim FC cover that owns month-end, FP&amp;A and board reporting — then automates the close so it runs in days, not weeks.
               </p>
-              <Link href="/finance" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand hover:text-white">
+              <Link href="/finance" className="mt-4 inline-flex min-h-8 items-center gap-1 text-sm font-semibold text-brand hover:text-white">
                 Explore finance <ArrowRight className="h-4 w-4" />
               </Link>
             </Card>
@@ -82,7 +82,7 @@ export default function HomePage() {
               <p className="mt-2 text-sm text-muted">
                 Dashboards, pipelines, analytics, automation and practical AI — the same rigour applied to your data.
               </p>
-              <Link href="/data-bi" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand hover:text-white">
+              <Link href="/data-bi" className="mt-4 inline-flex min-h-8 items-center gap-1 text-sm font-semibold text-brand hover:text-white">
                 Explore data &amp; BI <ArrowRight className="h-4 w-4" />
               </Link>
             </Card>
@@ -91,7 +91,7 @@ export default function HomePage() {
               <p className="mt-2 text-sm text-muted">
                 Senior finance leadership from a day a month — the advantage of an FD without the full-time hire.
               </p>
-              <Link href="/fractional" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand hover:text-white">
+              <Link href="/fractional" className="mt-4 inline-flex min-h-8 items-center gap-1 text-sm font-semibold text-brand hover:text-white">
                 Why fractional <ArrowRight className="h-4 w-4" />
               </Link>
             </Card>
@@ -135,7 +135,7 @@ export default function HomePage() {
                     alt={`${p.name} homepage`}
                     width={1200}
                     height={750}
-                    sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
+                    sizes="(min-width: 1152px) 350px, (min-width: 1024px) calc(33vw - 35px), (min-width: 640px) calc(50vw - 42px), calc(100vw - 40px)"
                     className="aspect-[16/10] w-full border-b border-line object-cover object-top"
                   />
                   <div className="p-6">
@@ -153,7 +153,7 @@ export default function HomePage() {
               href={`${aiSite.url}/products`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-sm font-semibold text-brand hover:text-white"
+              className="inline-flex min-h-8 items-center gap-1 text-sm font-semibold text-brand hover:text-white"
             >
               See the full portfolio on AIStrategise <ArrowUpRight className="h-4 w-4" />
             </a>
@@ -161,7 +161,7 @@ export default function HomePage() {
               href={folioNamesProfile}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm text-muted hover:text-white"
+              className="inline-flex min-h-8 items-center gap-2 text-sm text-muted hover:text-white"
             >
               <ShieldCheck className="h-4 w-4 text-brand" /> Independently safety-checked on FolioNames
             </a>

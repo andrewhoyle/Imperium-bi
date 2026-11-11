@@ -54,24 +54,27 @@ export function SectionHeading({
   lead,
   dark,
   center,
+  as: Heading = "h2",
 }: {
   eyebrow?: string;
   title: string;
   lead?: string;
   dark?: boolean;
   center?: boolean;
+  /** Use "h1" for the first heading on a page that has no other <h1>. */
+  as?: "h1" | "h2";
 }) {
   return (
     <div className={cn("max-w-2xl", center && "mx-auto text-center")}>
       {eyebrow && <Eyebrow dark={dark}>{eyebrow}</Eyebrow>}
-      <h2
+      <Heading
         className={cn(
           "mt-3 text-3xl font-semibold tracking-tight sm:text-4xl",
           dark && "text-white",
         )}
       >
         {title}
-      </h2>
+      </Heading>
       {lead && (
         <p className={cn("mt-4 text-lg leading-relaxed", dark ? "text-slate-300" : "text-muted")}>
           {lead}

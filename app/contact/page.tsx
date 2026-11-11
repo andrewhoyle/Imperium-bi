@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/src/lib/seo";
 import { Container, Section } from "@/src/components/ui";
 import { ContactForm } from "@/src/components/ContactForm";
 import { site } from "@/src/content/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
-  description: "Book a call or send a message — we'll be in touch within one business day.",
-  alternates: { canonical: "/contact" },
-};
+  description:
+    "Book a free discovery call or send a message about fractional finance, interim cover, BI or AI. We reply to every enquiry within one business day.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (
