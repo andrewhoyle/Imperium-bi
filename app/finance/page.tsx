@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Container, Section, SectionHeading, ButtonLink } from "@/src/components/ui";
+import { Container, Section, SectionHeading, ButtonLink, buttonClass } from "@/src/components/ui";
 import { ServiceGrid } from "@/src/components/ServiceGrid";
-import { financeServices, process } from "@/src/content/site";
-import { ArrowRight } from "lucide-react";
+import { financeServices, process, boardJudgement } from "@/src/content/site";
+import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Finance & FP&A",
@@ -23,6 +23,31 @@ export default function FinancePage() {
           />
           <div className="mt-10">
             <ServiceGrid services={financeServices} />
+          </div>
+        </Container>
+      </Section>
+
+      <Section dark className="!bg-deep">
+        <Container>
+          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-2">
+            <SectionHeading dark eyebrow={boardJudgement.eyebrow} title={boardJudgement.title} lead={boardJudgement.lead} />
+            <div>
+              <ul className="grid gap-3">
+                {boardJudgement.points.map((pt) => (
+                  <li key={pt} className="flex items-start gap-3 text-sm text-slate-300">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand" /> {pt}
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={boardJudgement.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={buttonClass("outline") + " mt-8 border-white/20 text-white hover:bg-white/10"}
+              >
+                See {boardJudgement.name} <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
           </div>
         </Container>
       </Section>

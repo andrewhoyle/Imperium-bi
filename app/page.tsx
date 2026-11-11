@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Container, Section, SectionHeading, ButtonLink, Card } from "@/src/components/ui";
-import { site, stats, clients, banking, advantages, howToBook } from "@/src/content/site";
+import { site, stats, clients, banking, advantages, howToBook, platforms, aiSite } from "@/src/content/site";
 
 export default function HomePage() {
   return (
@@ -114,6 +114,37 @@ export default function HomePage() {
               </Card>
             ))}
           </div>
+        </Container>
+      </Section>
+
+      {/* Software built */}
+      <Section>
+        <Container>
+          <SectionHeading
+            eyebrow="Software, not slideware"
+            title="Every engagement starts from shipped software."
+            lead="The finance, reporting and operations platforms I bring to client work — already in production, so your project starts months ahead."
+          />
+          <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {platforms.map((p) => (
+              <a key={p.name} href={p.url} target="_blank" rel="noopener noreferrer" className="block">
+                <Card className="h-full transition-colors hover:border-brand/40">
+                  <h3 className="flex items-center justify-between gap-2 font-display text-lg font-semibold text-white">
+                    {p.name} <ArrowUpRight className="h-4 w-4 shrink-0 text-brand" />
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{p.blurb}</p>
+                </Card>
+              </a>
+            ))}
+          </div>
+          <a
+            href={`${aiSite.url}/products`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-brand hover:text-white"
+          >
+            See the full portfolio on AIStrategise <ArrowUpRight className="h-4 w-4" />
+          </a>
         </Container>
       </Section>
 

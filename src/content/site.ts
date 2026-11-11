@@ -440,7 +440,7 @@ export const aiSuite = {
   name: "Imperium Suite",
   blurb:
     "AIStrategise's flagship governed-AI platform (patents pending) — a set of components for building, running and controlling AI agents safely.",
-  components: ["AgentFlow", "MeAgent", "Agent Shield", "AISight"],
+  components: ["Operational platforms", "AgentFlowMe", "Agent Shield", "AISight"],
 };
 
 export type Engagement = { name: string; tag: string; blurb: string; points: string[] };
@@ -544,7 +544,7 @@ export const advantages: { title: string; blurb: string }[] = [
   {
     title: "25 years where numbers matter",
     blurb:
-      "Fourteen years in investment-banking product control, then SME financial control, FP&A and interim work for RWE, P&O Ferries, Bellway and a $400m agritech group.",
+      "Fifteen years in investment-banking product control, then SME financial control, FP&A and interim work for RWE, P&O Ferries, Bellway and a $400m agritech group.",
   },
   {
     title: "Owner-led, senior from day one",
@@ -607,10 +607,59 @@ export const about = {
   title: "Founder · Interim FC · FP&A",
   creds: ["ACMA · CGMA", "CIMA Qualified", "PRINCE2", "SQL · Power BI · Python"],
   bio: [
-    "Imperium Business Intelligence is led directly by Andrew Hoyle — audit-trained, CIMA-qualified, with 25 years owning the numbers: fourteen in investment-banking product control, then SME financial control, FP&A and interim consultancy for RWE, P&O Ferries, Bellway plc and a $400m-revenue agritech group.",
+    "Imperium Business Intelligence is led directly by Andrew Hoyle — audit-trained, CIMA-qualified, with 25 years owning the numbers: fifteen in investment-banking product control, then SME financial control, FP&A and interim consultancy for RWE, P&O Ferries, Bellway plc and a $400m-revenue agritech group.",
     "Repeatedly brought in to stabilise and rebuild finance reporting under pressure — which is where the automation specialism started. Every engagement is owner-led: you work with the specialist, not a layer of account managers, and you're left with a finance function that runs itself rather than a report pack and a manual.",
   ],
 };
+
+/** BoardJudgement — Andrew's finance-reporting platform, brought to every finance engagement. */
+export const boardJudgement = {
+  name: "BoardJudgement",
+  url: "https://boardjudgement.com",
+  eyebrow: "The platform I bring",
+  title: "Finance that runs itself — already built.",
+  lead: "BoardJudgement is my finance-reporting platform. It reconciles ledger and spreadsheet data into board packs, forecasts and answers you can check back to source — so an engagement starts from working software, not a blank spreadsheet.",
+  points: [
+    "Ledger and spreadsheet data reconciled to one source",
+    "Board packs generated, not hand-assembled",
+    "Forecasts built on numbers that tie out",
+    "Every answer traceable back to the figures behind it",
+  ],
+};
+
+/** Selection of production platforms built by Andrew — the full portfolio lives on AIStrategise. */
+export const platforms: { name: string; url: string; blurb: string }[] = [
+  {
+    name: "BoardJudgement",
+    url: "https://boardjudgement.com",
+    blurb: "Reconciles ledger and spreadsheet data into board packs and forecasts.",
+  },
+  {
+    name: "GoPortal",
+    url: "https://goportal.io",
+    blurb: "Joint-venture governance — budgets, partner voting, audit records.",
+  },
+  {
+    name: "ProdXchange",
+    url: "https://prodxchange.com",
+    blurb: "Sourcing, logistics, settlements and billing for produce brokers.",
+  },
+  {
+    name: "JobFlowMe",
+    url: "https://jobflowme.com",
+    blurb: "Garage workflow from job card and approvals to invoice and ledger.",
+  },
+  {
+    name: "WalkQuote",
+    url: "https://walkquote.com",
+    blurb: "Spoken job walkthroughs turned into priced quotes and invoices.",
+  },
+  {
+    name: "IMAISA",
+    url: "https://imaisa.com",
+    blurb: "Facilities and M&E operations, from building data to billing.",
+  },
+];
 
 export type Client = { name: string; scale: string };
 export const clients: Client[] = [
@@ -626,6 +675,8 @@ export const banking = [
   "Barclays Capital",
   "Bank of America Merrill Lynch",
   "HSBC",
+  "ING",
+  "Dresdner Kleinwort",
 ];
 
 export const bookingTopics = [
