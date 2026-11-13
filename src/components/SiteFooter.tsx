@@ -85,6 +85,10 @@ export function SiteFooter() {
         <span>
           <Link href="/privacy" className="inline-block py-1 hover:text-accent">
             Privacy Notice
+          </Link>{" "}
+          ·{" "}
+          <Link href="/terms" className="inline-block py-1 hover:text-accent">
+            Terms of Use
           </Link>
           <CookieSettingsButton before=" · " className="cursor-pointer py-1 hover:text-accent" /> ·{" "}
           {site.address}
